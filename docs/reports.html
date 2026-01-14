@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home Finances Reports</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    
+
+
+    <main class="page">
+      
+<header class="hero" data-reveal style="--delay: 0ms;">
+  <div class="hero-top">
+  <p class="eyebrow">Home Finances</p>
+  <nav class="nav">
+  <a href="index.html">
+    Dashboard
+  </a>
+  <a href="accounts.html">
+    Accounts
+  </a>
+  <a href="reports.html">
+    Reports
+  </a>
+  <a href="import.html">
+    Import Wizard
+  </a>
+  <a href="planning.html">
+    Planning
+  </a>
+  <a href="instructions.html">
+    Instructions
+  </a>
+</nav>
+</div>
+  <h1>Monthly reports</h1>
+  <p class="lede">
+    Track household trends, compare month-over-month changes, and export files
+    for your own records.
+  </p>
+  <div class="actions">
+    <a class="btn" href="#" data-report-new>New monthly report</a>
+    <div class="export-controls">
+      <label class="visually-hidden" for="report-export-type">Export type</label>
+      <select id="report-export-type" data-report-export-type>
+        <option value="csv">CSV</option>
+        <option value="pdf">PDF</option>
+        <option value="archive">Archive</option>
+      </select>
+      <button class="btn ghost" type="button" data-report-export>
+        Export
+      </button>
+    </div>
+  </div>
+</header>
+
+      
+<section class="section" data-reveal style="--delay: 120ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Highlights</p>
+      <h2>Open reports</h2>
+    </div>
+    <span class="pill" data-report-pill>No drafts yet</span>
+  </div>
+  <p class="notice" data-report-status role="status" aria-live="polite">
+    Ready to create a monthly summary.
+  </p>
+  <div class="report-grid" data-report-grid></div>
+  <div class="table-card">
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Report</th>
+          <th>Period</th>
+          <th>Status</th>
+          <th>Focus</th>
+        </tr>
+      </thead>
+      <tbody data-report-table></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" data-reveal style="--delay: 180ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Checklist</p>
+      <h2>Monthly close checklist</h2>
+    </div>
+  </div>
+  <div class="split">
+    <article class="card">
+      <h3>Before you archive</h3>
+      <ul class="list">
+        <li><strong>Reconcile</strong><span>All accounts match statements</span></li>
+        <li><strong>Variance</strong><span>Explain 5%+ shifts</span></li>
+        <li><strong>Notes</strong><span>Record one-off events</span></li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Exports</h3>
+      <ul class="list">
+        <li><strong>CSV</strong><span>Raw transactions</span></li>
+        <li><strong>PDF</strong><span>Monthly summary</span></li>
+        <li><strong>Archive</strong><span>Store in docs</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+    </main>
+    <footer class="site-footer">
+  <span>Finances Workspace</span>
+  <span data-year></span>
+</footer>
+  </body>
+</html>

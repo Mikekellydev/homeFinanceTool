@@ -1,0 +1,254 @@
+{% extends "partials/base.html" %}
+
+{% block page_vars %}
+{% set active_page = "accounts" %}
+{% endblock %}
+
+{% block title %}Home Finances Accounts{% endblock %}
+
+{% block hero %}
+<header class="hero" data-reveal style="--delay: 0ms;">
+  {% include "partials/header.html" %}
+  <h1>Accounts register</h1>
+  <p class="lede">
+    Track every household transaction in a register-style view with filters and
+    running balances.
+  </p>
+  <div class="actions">
+    <a class="btn" href="import.html#manual-entry">Add transaction</a>
+    <a class="btn ghost" href="import.html">Import files</a>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="section" data-reveal style="--delay: 120ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Accounts</p>
+      <h2>Your accounts</h2>
+    </div>
+    <span class="pill">Add and organize</span>
+  </div>
+  <div class="split">
+    <form class="card planner" data-account-form>
+      <h3>Add account</h3>
+      <div class="form-grid">
+        <div class="field">
+          <label for="account-name">Account name</label>
+          <input
+            id="account-name"
+            name="name"
+            type="text"
+            placeholder="Chase Freedom"
+            required
+          />
+        </div>
+        <div class="field">
+          <label for="account-group">Account group</label>
+          <select id="account-group" name="group" required>
+            <option value="On budget">On budget</option>
+            <option value="Off budget">Off budget</option>
+            <option value="Tracking">Tracking</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="account-type">Account type</label>
+          <select id="account-type" name="type" required>
+            <option value="Checking">Checking</option>
+            <option value="Savings">Savings</option>
+            <option value="Credit card">Credit card</option>
+            <option value="Cash">Cash</option>
+            <option value="Investment">Investment</option>
+            <option value="Retirement">Retirement</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="account-institution">Institution</label>
+          <input
+            id="account-institution"
+            name="institution"
+            type="text"
+            placeholder="Optional"
+          />
+        </div>
+        <div class="field">
+          <label for="account-opening-balance">Opening balance</label>
+          <input
+            id="account-opening-balance"
+            name="opening_balance"
+            type="number"
+            step="0.01"
+            placeholder="0.00"
+          />
+        </div>
+        <div class="field">
+          <label for="account-opening-date">Opening balance date</label>
+          <input id="account-opening-date" name="opening_date" type="date" />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn" type="submit" data-account-submit>
+          Add account
+        </button>
+        <button
+          class="btn small ghost"
+          type="button"
+          data-account-cancel
+          hidden
+        >
+          Cancel edit
+        </button>
+        <span class="helper muted">
+          Opening balance creates a first register entry.
+        </span>
+      </div>
+    </form>
+    <div class="card">
+      <h3>Account list</h3>
+      <div class="table-card">
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Account</th>
+              <th>Group</th>
+              <th>Type</th>
+              <th>Institution</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody data-accounts-list></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-reveal style="--delay: 180ms;" data-register>
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Register</p>
+      <h2>Account activity</h2>
+    </div>
+    <span class="pill">Search + filter</span>
+  </div>
+  <div class="table-toolbar">
+    <div class="field">
+      <label for="register-account">Account</label>
+      <select
+        id="register-account"
+        data-register-account
+        data-account-select
+        data-allow-all="true"
+      >
+        <option value="all">All accounts</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="register-search">Search</label>
+      <input
+        id="register-search"
+        type="search"
+        placeholder="Payee, category, memo"
+        data-register-search
+      />
+    </div>
+    <div class="field">
+      <label for="register-type">Type</label>
+      <select id="register-type" data-register-type>
+        <option value="all">All</option>
+        <option value="inflow">Inflow</option>
+        <option value="outflow">Outflow</option>
+      </select>
+    </div>
+  </div>
+  <div class="register-summary">
+    <span><strong>Inflow:</strong> <span data-register-inflow>$0</span></span>
+    <span><strong>Outflow:</strong> <span data-register-outflow>$0</span></span>
+    <span><strong>Net:</strong> <span data-register-net>$0</span></span>
+  </div>
+  <div class="table-card">
+    <table class="report-table register-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Account</th>
+          <th>Payee</th>
+          <th>Category</th>
+          <th>Memo</th>
+          <th>Outflow</th>
+          <th>Inflow</th>
+          <th>Balance</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody data-register-add>
+        <tr class="register-add-row">
+          <td>
+            <input
+              type="date"
+              data-add-field="date"
+              aria-label="Date"
+              required
+            />
+          </td>
+          <td>
+            <select data-add-field="account" data-account-select aria-label="Account"></select>
+          </td>
+          <td>
+            <input
+              type="text"
+              data-add-field="payee"
+              placeholder="Payee"
+              aria-label="Payee"
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              data-add-field="category"
+              placeholder="Category"
+              aria-label="Category"
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              data-add-field="memo"
+              placeholder="Memo"
+              aria-label="Memo"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              step="0.01"
+              data-add-field="outflow"
+              placeholder="0.00"
+              aria-label="Outflow"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              step="0.01"
+              data-add-field="inflow"
+              placeholder="0.00"
+              aria-label="Inflow"
+            />
+          </td>
+          <td class="muted">-</td>
+          <td>
+            <button class="btn small" type="button" data-add-action="add">
+              Add
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody data-register-rows>
+      </tbody>
+    </table>
+  </div>
+  <p class="hint">Running balances update based on the filters above.</p>
+</section>
+{% endblock %}
