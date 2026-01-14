@@ -1,0 +1,184 @@
+{% extends "partials/base.html" %}
+
+{% block page_vars %}
+{% set active_page = "import" %}
+{% endblock %}
+
+{% block title %}Home Finances Import Wizard{% endblock %}
+
+{% block hero %}
+<header class="hero" data-reveal style="--delay: 0ms;">
+  {% include "partials/header.html" %}
+  <h1>Import wizard</h1>
+  <p class="lede">
+    Bring new data in with confidence by staging, mapping, and validating
+    before it hits your budget.
+  </p>
+  <div class="actions">
+    <button class="btn" type="button" data-file-trigger>Upload CSV</button>
+    <a class="btn ghost" href="#">Use template</a>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="section" data-reveal style="--delay: 120ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Workflow</p>
+      <h2>Import steps</h2>
+    </div>
+    <span class="pill">No imports yet</span>
+  </div>
+  <div class="wizard">
+    <article class="card wizard-step">
+      <span class="step">1</span>
+      <h3>Select sources</h3>
+      <p>Choose CSV, OFX, or manual entry templates.</p>
+    </article>
+    <article class="card wizard-step">
+      <span class="step">2</span>
+      <h3>Map fields</h3>
+      <p>Align dates, payees, and categories to your household plan.</p>
+    </article>
+    <article class="card wizard-step">
+      <span class="step">3</span>
+      <h3>Review + confirm</h3>
+      <p>Spot duplicates and confirm totals before merge.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" data-reveal style="--delay: 180ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Validation</p>
+      <h2>Pre-import checks</h2>
+    </div>
+  </div>
+  <div class="split">
+    <article class="card">
+      <h3>Required columns</h3>
+      <ul class="list">
+        <li><strong>Date</strong><span>YYYY-MM-DD</span></li>
+        <li><strong>Description</strong><span>Payee or memo</span></li>
+        <li><strong>Amount</strong><span>Signed values</span></li>
+        <li><strong>Category</strong><span>Optional tag</span></li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Pre-flight summary</h3>
+      <ul class="list">
+        <li><strong>Rows</strong><span>0 detected</span></li>
+        <li><strong>Duplicates</strong><span>0 flagged</span></li>
+        <li><strong>Outliers</strong><span>0 to review</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="manual-entry" class="section" data-reveal style="--delay: 220ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Manual entry</p>
+      <h2>Add transactions by hand</h2>
+    </div>
+    <span class="pill">Saved in this browser</span>
+  </div>
+  <div class="split">
+    <form class="card planner" data-transaction-form>
+      <div class="form-grid">
+        <div class="field">
+          <label for="txn-date">Date</label>
+          <input id="txn-date" name="date" type="date" required />
+        </div>
+        <div class="field">
+          <label for="txn-account">Account</label>
+          <select id="txn-account" name="account" data-account-select required></select>
+        </div>
+        <div class="field">
+          <label for="txn-payee">Payee</label>
+          <input id="txn-payee" name="payee" type="text" placeholder="Grocery store" required />
+        </div>
+        <div class="field">
+          <label for="txn-category">Category</label>
+          <input id="txn-category" name="category" type="text" placeholder="Groceries" />
+        </div>
+        <div class="field">
+          <label for="txn-type">Type</label>
+          <select id="txn-type" name="type" required>
+            <option value="outflow">Outflow</option>
+            <option value="inflow">Inflow</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="txn-amount">Amount</label>
+          <input id="txn-amount" name="amount" type="number" step="0.01" placeholder="0.00" required />
+        </div>
+        <div class="field">
+          <label for="txn-memo">Memo</label>
+          <input id="txn-memo" name="memo" type="text" placeholder="Optional note" />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn" type="submit">Add transaction</button>
+        <span class="helper muted">Stored locally in this browser.</span>
+      </div>
+    </form>
+
+    <div class="card">
+      <h3>Recent manual entries</h3>
+      <div class="table-card">
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Account</th>
+              <th>Payee</th>
+              <th>Category</th>
+              <th>Memo</th>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody data-transaction-list></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-reveal style="--delay: 260ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Drop zone</p>
+      <h2>Stage your files</h2>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Drop files to start</h3>
+    <p class="muted">
+      This view expects a CSV with columns: date, description, amount, category.
+    </p>
+    <div class="field">
+      <label for="import-account">Assign to account</label>
+      <select id="import-account" data-import-account data-account-select></select>
+    </div>
+    <input
+      id="import-file-input"
+      class="visually-hidden"
+      type="file"
+      accept=".csv,.ofx"
+      multiple
+    />
+    <p class="notice" data-file-status role="status" aria-live="polite">
+      No files selected.
+    </p>
+    <div class="actions">
+      <button class="btn small" type="button" data-file-trigger>Upload CSV</button>
+      <a class="btn small ghost" href="#">View mapping rules</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

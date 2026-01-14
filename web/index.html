@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home Finances Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    
+
+
+    <main class="page">
+      
+<header class="hero" data-reveal style="--delay: 0ms;">
+  <div class="hero-top">
+  <p class="eyebrow">Home Finances</p>
+  <nav class="nav">
+  <a href="index.html">
+    Dashboard
+  </a>
+  <a href="accounts.html">
+    Accounts
+  </a>
+  <a href="reports.html">
+    Reports
+  </a>
+  <a href="import.html">
+    Import Wizard
+  </a>
+  <a href="planning.html">
+    Planning
+  </a>
+  <a href="instructions.html">
+    Instructions
+  </a>
+</nav>
+</div>
+  <h1>Home finance dashboard</h1>
+  <p class="lede">
+    Track household balances, spending trends, and upcoming bills at a glance.
+  </p>
+  <div class="actions">
+    <a class="btn" href="reports.html">View monthly reports</a>
+    <a class="btn ghost" href="import.html">Start import</a>
+  </div>
+</header>
+
+      
+<section class="section" data-reveal style="--delay: 120ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Dashboard</p>
+      <h2>High-level summaries</h2>
+    </div>
+    <span class="pill">Updated 2 hours ago</span>
+  </div>
+  <div class="summary-grid">
+    <article class="summary-card">
+      <p class="label">Net cash flow (30d)</p>
+      <p class="value" data-dashboard-net>--</p>
+      <p class="trend" data-dashboard-net-trend>Add transactions to see totals.</p>
+    </article>
+    <article class="summary-card">
+      <p class="label">Total balances</p>
+      <p class="value" data-dashboard-total>--</p>
+      <p class="trend" data-dashboard-total-trend>Add accounts to track balances.</p>
+    </article>
+    <article class="summary-card">
+      <p class="label">Budget used</p>
+      <p class="value" data-dashboard-budget>--</p>
+      <p class="trend" data-dashboard-budget-trend>
+        Start categorizing transactions.
+      </p>
+    </article>
+    <article class="summary-card">
+      <p class="label">Upcoming bills</p>
+      <p class="value" data-dashboard-bills>--</p>
+      <p class="trend" data-dashboard-bills-trend>Add scheduled payments.</p>
+    </article>
+  </div>
+
+  <div class="split">
+    <article class="card">
+      <h3>Accounts snapshot</h3>
+      <ul class="list" data-dashboard-accounts></ul>
+    </article>
+    <article class="card">
+      <h3>Category highlights</h3>
+      <ul class="list" data-dashboard-categories></ul>
+    </article>
+  </div>
+</section>
+
+<section class="section" data-reveal style="--delay: 180ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Quick paths</p>
+      <h2>Jump into deeper views</h2>
+    </div>
+  </div>
+  <div class="report-grid">
+    <article class="card">
+      <h3>Accounts register</h3>
+      <p class="muted">
+        Browse account activity, search transactions, and view running balances.
+      </p>
+      <div class="actions">
+        <a class="btn small" href="accounts.html">Open accounts</a>
+      </div>
+    </article>
+    <article class="card">
+      <h3>Monthly reports</h3>
+      <p class="muted">
+        Create monthly summaries, export CSVs, and keep notes for reference.
+      </p>
+      <div class="actions">
+        <a class="btn small" href="reports.html">Open reports</a>
+      </div>
+    </article>
+    <article class="card">
+      <h3>Import wizard</h3>
+      <p class="muted">
+        Bring in CSV/OFX data, map fields, and validate totals quickly.
+      </p>
+      <div class="actions">
+        <a class="btn small" href="import.html">Start import</a>
+      </div>
+    </article>
+    <article class="card">
+      <h3>Planning scenarios</h3>
+      <p class="muted">
+        Run earnings scenarios to plan household cash flow.
+      </p>
+      <div class="actions">
+        <a class="btn small" href="planning.html">Run scenarios</a>
+      </div>
+    </article>
+    <article class="card">
+      <h3>Home guide</h3>
+      <p class="muted">
+        Learn the weekly workflow, data checklist, and monthly close.
+      </p>
+      <div class="actions">
+        <a class="btn small" href="instructions.html">View guide</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+    </main>
+    <footer class="site-footer">
+  <span>Finances Workspace</span>
+  <span data-year></span>
+</footer>
+  </body>
+</html>

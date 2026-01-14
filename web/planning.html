@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home Finances Planning</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    
+
+
+    <main class="page">
+      
+<header class="hero" data-reveal style="--delay: 0ms;">
+  <div class="hero-top">
+  <p class="eyebrow">Home Finances</p>
+  <nav class="nav">
+  <a href="index.html">
+    Dashboard
+  </a>
+  <a href="accounts.html">
+    Accounts
+  </a>
+  <a href="reports.html">
+    Reports
+  </a>
+  <a href="import.html">
+    Import Wizard
+  </a>
+  <a href="planning.html">
+    Planning
+  </a>
+  <a href="instructions.html">
+    Instructions
+  </a>
+</nav>
+</div>
+  <h1>Planning scenarios</h1>
+  <p class="lede">
+    Run what-if scenarios for future earnings and stress-test household savings
+    goals.
+  </p>
+  <div class="actions">
+    <a class="btn" href="#scenario">Run scenario</a>
+    <a class="btn ghost" href="reports.html">View reports</a>
+  </div>
+</header>
+
+      
+<section id="scenario" class="section" data-reveal style="--delay: 120ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Scenario runner</p>
+      <h2>Test future earnings</h2>
+    </div>
+    <span class="pill">Scenario runner</span>
+  </div>
+  <div class="planning-grid">
+    <form class="planner card" data-planner>
+      <div class="field">
+        <label for="income">Monthly income</label>
+        <input id="income" name="income" type="number" value="8500" />
+      </div>
+      <div class="field">
+        <label for="expenses">Monthly expenses</label>
+        <input id="expenses" name="expenses" type="number" value="5200" />
+      </div>
+      <div class="field">
+        <label for="growth">Income growth (% / month)</label>
+        <input id="growth" name="growth" type="number" step="0.1" value="0.6" />
+      </div>
+      <div class="field">
+        <label for="months">Planning horizon (months)</label>
+        <input id="months" name="months" type="number" value="12" />
+      </div>
+      <button class="btn" type="submit">Run scenario</button>
+    </form>
+    <div class="planner-result card">
+      <h3>Scenario output</h3>
+      <p class="muted">Based on your inputs, estimated net savings:</p>
+      <p class="value" data-result-net>$0</p>
+      <div class="result-grid">
+        <div>
+          <p class="label">Final monthly income</p>
+          <p data-result-income>$0</p>
+        </div>
+        <div>
+          <p class="label">Average monthly net</p>
+          <p data-result-average>$0</p>
+        </div>
+      </div>
+      <p class="hint">Use this as a quick sanity check, not a formal forecast.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-reveal style="--delay: 180ms;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">What to track</p>
+      <h2>Planning notes</h2>
+    </div>
+  </div>
+  <div class="split">
+    <article class="card">
+      <h3>Inputs to review</h3>
+      <ul class="list">
+        <li><strong>Income changes</strong><span>Bonuses, raises</span></li>
+        <li><strong>New obligations</strong><span>Loans, housing</span></li>
+        <li><strong>One-time spend</strong><span>Travel, repairs</span></li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Decision cues</h3>
+      <ul class="list">
+        <li><strong>Goal pace</strong><span>Monthly targets</span></li>
+        <li><strong>Buffer</strong><span>Emergency fund</span></li>
+        <li><strong>Investing</strong><span>Monthly transfers</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+    </main>
+    <footer class="site-footer">
+  <span>Finances Workspace</span>
+  <span data-year></span>
+</footer>
+  </body>
+</html>
